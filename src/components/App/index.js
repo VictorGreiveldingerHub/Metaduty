@@ -1,9 +1,15 @@
+// == Import npm
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
-import './App.css';
 
+// == Import local
+import './style.css';
+// A voir dans le futur => SoC
 // ABI du contrat avec lequel on intéragit.
-import Greeter from './artifacts/contracts/Greeter.sol/Greeter.json';
+import Greeter from '../../artifacts/contracts/Greeter.sol/Greeter.json';
+
+// == Import composants
+import Header from '../Header/';
 
 
 // Addresse où le contrat est déployé
@@ -54,7 +60,8 @@ const App = () => {
   }
   
   return (
-    <div className="App">
+    <div className="app">
+      <Header />
       <p>{greeting}</p>
       <input onChange={e => setGreetingValue(e.target.value)} placeholder="Set greeting" />
       <button onClick={setGreeting}>Set Greeting</button>
