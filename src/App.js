@@ -48,12 +48,16 @@ const App = () => {
       const transaction = await contract.setGreeting(greeting);
       setGreetingValue('');
       await transaction.wait();
+      // Une fois l'ajout fait on relance direct
+      fetchGreeting();
     }
   }
   
   return (
     <div className="App">
       <p>{greeting}</p>
+      <input onChange={e => setGreetingValue(e.target.value)} placeholder="Set greeting" />
+      <button onClick={setGreeting}>Set Greeting</button>
     </div>
   );
 }
