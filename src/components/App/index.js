@@ -1,6 +1,7 @@
 // == Import npm
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
+import { Routes, Route } from 'react-router-dom';
 
 // == Import local
 import './style.css';
@@ -10,10 +11,16 @@ import Greeter from '../../artifacts/contracts/Greeter.sol/Greeter.json';
 
 // == Import composants
 import Header from '../Header/';
-
+import Home from '../Home';
+import Login from '../Login';
+import Game from '../Game';
+import Train from '../Train';
+import SignUp from '../SignUp';
+import Contact from '../Contact';
+import Footer from '../Footer';
 
 // Addresse où le contrat est déployé
-const greeterAddress = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512';
+const greeterAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
 
 const App = () => {
   
@@ -23,8 +30,12 @@ const App = () => {
     fetchGreeting();
   }, []);
   
+  if (typeof window.ethereum !== 'undefined') {
+    console.log('MetaMask is installed!');
+  }
+  
   async function requestAccount () {
-    await window.ethereum.request({method: 'eth_requestAccounts'});
+    await window.ethereum.request({ method: 'eth_requestAccounts' });
   }
   
   async function fetchGreeting() {
@@ -36,7 +47,7 @@ const App = () => {
       try {
         // Je viens intéragir avec le contrat intelligent (function greet() ) pour récupérer dans mon front les données.
         const data = await contract.greet();
-        console.log(data);
+        // console.log(data);
         setGreetingValue(data);
       } catch (error) {
         console.log(error);
@@ -57,7 +68,7 @@ const App = () => {
       // Une fois l'ajout fait on relance direct
       fetchGreeting();
     }
-  }
+  };
   
   return (
     <div className="app">
@@ -65,6 +76,15 @@ const App = () => {
       <p>{greeting}</p>
       <input onChange={e => setGreetingValue(e.target.value)} placeholder="Set greeting" />
       <button onClick={setGreeting}>Set Greeting</button>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/game' element={<Game />} />
+        <Route path='/train' element={<Train />} />
+        <Route path='/contact' element={<Contact />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
