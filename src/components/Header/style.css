@@ -4,7 +4,7 @@
     height: 20vh;
     /*adding-bottom: 5em;*/
     /* background-color: antiquewhite; */
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid rgb(216, 216, 216);
 }
 
 .menu-items {
@@ -13,4 +13,8 @@
     align-items: center;
     justify-content: space-around;
     width: 100%;
+}
+
+#logo {
+    width: 100px;
 }

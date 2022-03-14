@@ -16,6 +16,7 @@ import Login from '../Login';
 import Game from '../Game';
 import Train from '../Train';
 import SignUp from '../SignUp';
+import Legals from '../Legals';
 import Contact from '../Contact';
 import Footer from '../Footer';
 
@@ -25,9 +26,19 @@ const greeterAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
 const App = () => {
   
   const [greeting, setGreetingValue] = useState();
+  const [data, setData] = useState(null);
   
   useEffect(() => {
     fetchGreeting();
+    fetch("/api")
+      .then((res) => res.json())
+      .then((data) => setData(data.message));
+  }, []);
+  
+  useEffect(() => {
+    fetch("/api")
+      .then((res) => res.json())
+      .then((data) => setData(data.message));
   }, []);
   
   if (typeof window.ethereum !== 'undefined') {
@@ -72,17 +83,19 @@ const App = () => {
   
   return (
     <div className="app">
-      <Header />
-      <p>{greeting}</p>
+      <Header pseudo={greeting}/>
+      
       <input onChange={e => setGreetingValue(e.target.value)} placeholder="Set greeting" />
-      <button onClick={setGreeting}>Set Greeting</button>
+      <button onClick={setGreeting}>Bienvenu</button>
+      <p>{!data ? "Loading..." : data}</p>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/signup' element={<SignUp />} />
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
         <Route path='/game' element={<Game />} />
         <Route path='/train' element={<Train />} />
         <Route path='/contact' element={<Contact />} />
+        <Route exact path='/mentions-legales' element={<Legals />} />
       </Routes>
       <Footer />
     </div>
