@@ -1,0 +1,10 @@
+.gaming-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-section-learning {
+    border: 1px solid black;
+    border-radius: 5%;
+    flex: 5;
+}

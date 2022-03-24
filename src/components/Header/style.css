@@ -1,9 +1,5 @@
 .header {
     display: flex;
-    width: 100vw;
-    height: 20vh;
-    /*adding-bottom: 5em;*/
-    /* background-color: antiquewhite; */
     border-bottom: 1px solid rgb(216, 216, 216);
 }
 
@@ -11,8 +7,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 100%;
+}
+
+.items {
+    text-decoration: none;
+    color: black; 
 }
 
 #logo {

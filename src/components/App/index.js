@@ -18,6 +18,7 @@ import Train from '../Train';
 import SignUp from '../SignUp';
 import Legals from '../Legals';
 import Contact from '../Contact';
+import WhoWeAre from '../WhoAreWe';
 import Footer from '../Footer';
 
 // Addresse où le contrat est déployé
@@ -35,14 +36,8 @@ const App = () => {
       .then((data) => setData(data.message));
   }, []);
   
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-  
   if (typeof window.ethereum !== 'undefined') {
-    console.log('MetaMask is installed!');
+    // console.log('MetaMask is installed!');
   }
   
   async function requestAccount () {
@@ -84,17 +79,18 @@ const App = () => {
   return (
     <div className="app">
       <Header pseudo={greeting}/>
-      
-      <input onChange={e => setGreetingValue(e.target.value)} placeholder="Set greeting" />
-      <button onClick={setGreeting}>Bienvenu</button>
-      <p>{!data ? "Loading..." : data}</p>
+      <div className="first">
+        <input onChange={e => setGreetingValue(e.target.value)} placeholder="Choisir un pseudo" className='pseudo'/>
+        <button onClick={setGreeting}>Valider pour la session</button>
+      </div>
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/signup' element={<SignUp />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/game' element={<Game />} />
-        <Route path='/train' element={<Train />} />
-        <Route path='/contact' element={<Contact />} />
+        <Route exact path='/login' element={<Login />} />
+        <Route exact path='/game' element={<Game />} />
+        <Route exact path='/train' element={<Train />} />
+        <Route exact path='/contact' element={<Contact />} />
+        <Route exact path='/who_we_are' element={<WhoWeAre />} />
         <Route exact path='/mentions-legales' element={<Legals />} />
       </Routes>
       <Footer />

@@ -13,6 +13,9 @@ const Footer = () => {
         <div className="mentions">
             <Link to='/mentions-legales'>Mentions légales</Link>
         </div>
+        <div className="whoWeAre">
+            <Link to='/who_we_are'>Qui sommes-nous ?</Link>
+        </div>
         <div className="contact">
             <Link to='/contact'>Contact</Link>
         </div>

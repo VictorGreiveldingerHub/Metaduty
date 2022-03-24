@@ -1,4 +1,7 @@
 .footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    height: 10vh;
+    border-top: 1px solid rgb(179, 179, 179);
+    padding-top: 1em;
 }

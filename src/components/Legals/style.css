@@ -1,0 +1,5 @@
+.mentions-legales {
+    display: flex;
+    margin: 5em 10em;
+    flex-direction: column;
+}

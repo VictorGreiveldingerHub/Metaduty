@@ -9,11 +9,16 @@ import logo from './logo.jpeg';
 // == Import composants
 
 
-const Header = ({pseudo}) => {
-    console.log('Greeting de Header: ', pseudo);
+const Header = ({ pseudo }) => {
   return (
     <nav className="header">
         <div className="menu-items">
+        <div className="items">
+            <Link to='/game'>Jouer</Link>
+        </div>
+        <div className="items">
+            <Link to='/train'>S'entraîner</Link>
+        </div>
         <div className="items">
             <a href='/'>
                 <figure>
@@ -21,12 +26,6 @@ const Header = ({pseudo}) => {
                     <figcaption>{pseudo}</figcaption>
                 </figure>
             </a>
-        </div>
-        <div className="items">
-            <Link to='/game'>Jouer</Link>
-        </div>
-        <div className="items">
-            <Link to='/train'>S'entraîner</Link>
         </div>
         <div className="items">
             <Link to='/login'>Se connecter</Link>

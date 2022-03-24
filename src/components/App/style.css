@@ -1,3 +1,21 @@
 .app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   text-align: center;
+}
+
+.pseudo {
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom: 1px solid rgb(182, 182, 182);
+  margin-bottom: 1em;
+}
+
+.first {
+  display: flex;
+  width: 25%;
+  margin: auto;
+  flex-direction: column;
 }
